@@ -21,7 +21,7 @@ def translate_text(target, text):
     # Text can also be a sequence of strings, in which case this method
     # will return a sequence of results for each text.
     result = translate_client.translate(text, target_language=target)
-    print("Google Translate: <{}> -> <{}>".format(result["input"], result["translatedText"]))
+    print("Google Translate: {} -> {}".format(result["input"], result["translatedText"]))
 
     return result['translatedText']
 
@@ -43,6 +43,7 @@ class AbpLanguageXML:
     def diff(self, target):
         no_in_target = {}
         no_in_base = {}
+
         for key, value in self.dict.items():
             if key not in target.dict:
                 no_in_target[key] = value
@@ -55,10 +56,13 @@ class AbpLanguageXML:
 
     def add_key(self, target, copy_value=False, translation=False):
         now = datetime.now()
+
         target_missing, base_missing = self.diff(target)
+
         if len(target_missing) == 0:
             print("No difference is found between {} and {}".format(self.file_path, target.file_path))
             exit(0)
+
         texts = target.root[0]
 
         texts[-1].tail = "\n\n    "
@@ -84,12 +88,7 @@ class AbpLanguageXML:
 
         target.tree.write(target.file_path, encoding="UTF-8", xml_declaration=True)
 
-        return
-
-    def add_key_value(self, target):
-        return
-
-    def add_translation(self, target):
+        print("Done. {} keys or values has been written to <{}>".format(len(target_missing), target.file_path))
         return
 
 
@@ -98,8 +97,8 @@ def print_usage(prog_name):
     print("  base: path to the language base xml file")
     print("  target: path to the target language xml file")
     print("  action: diff      - compare the key difference between base and target")
-    print("          keyonly   - add the key to target which is missing, leave the translation blank")
-    print("          keyvalue  - add the key to target which is missing, copy the translation to target")
+    print("          keyonly   - add the key to target which is missing, leave the value blank")
+    print("          keyvalue  - add the key to target which is missing, copy the value to target")
     print("          translate - add the key to target which is missing, add google translation to target")
     print("See: https://github.com/Carben-dev/abp-xml-utilities")
 
@@ -138,18 +137,21 @@ def main(argv):
         exit(0)
 
     elif action == "keyonly":
+        print("Copying new key from <{}> to <{}>".format(base_file_path,target_file_path))
         base = AbpLanguageXML(base_file_path)
         target = AbpLanguageXML(target_file_path)
         base.add_key(target)
         exit(0)
 
     elif action == "keyvalue":
+        print("Copying new key and value from <{}> to <{}>".format(base_file_path, target_file_path))
         base = AbpLanguageXML(base_file_path)
         target = AbpLanguageXML(target_file_path)
         base.add_key(target, copy_value=True)
         exit(0)
 
     elif action == "translate":
+        print("Copying new key and google translated value from <{}> to <{}>".format(base_file_path, target_file_path))
         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = googe_api_key_json
         base = AbpLanguageXML(base_file_path)
         target = AbpLanguageXML(target_file_path)

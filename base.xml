@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="en">
+  <texts>
+    <text name="HomePage">Home page</text>
+    <text name="AboutUs">About us</text>
+    <text name="Administration">Administration</text>
+    <text name="Roles">Roles</text>
+    <text name="Users">Users</text>
+    <text name="IAmNotInTarget1">I am not in target 1.</text>
+    <text name="IAmNotInTarget2">I am not in target 2.</text>
+  </texts>
+</localizationDictionary>
