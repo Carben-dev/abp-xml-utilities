@@ -69,7 +69,7 @@ Found 1 key(s) in target, but not in base:
 Copying new key from <base.xml> to <target.xml>
 Done. 2 keys or values has been written to <target.xml>
 ```
-####target.xml result:
+#### target.xml result:
 ```
 <?xml version='1.0' encoding='UTF-8'?>
 <localizationDictionary culture="zh-Hans">
@@ -94,7 +94,7 @@ Done. 2 keys or values has been written to <target.xml>
 Copying new key from <base.xml> to <target.xml>
 Done. 2 keys or values has been written to <target.xml>
 ```
-####target.xml result:
+#### target.xml result:
 ```
 <?xml version='1.0' encoding='UTF-8'?>
 <localizationDictionary culture="zh-Hans">
@@ -121,7 +121,7 @@ Google Translate: I am not in target 1. -> 我不在目标1中。
 Google Translate: I am not in target 2. -> 我不在目标2中。
 Done. 2 keys or values has been written to <target.xml>
 ```
-####target.xml result:
+#### target.xml result:
 ```
 <?xml version='1.0' encoding='UTF-8'?>
 <localizationDictionary culture="zh-Hans">
