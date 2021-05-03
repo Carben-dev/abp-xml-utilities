@@ -18,12 +18,17 @@ def translate_text(target, text):
     if isinstance(text, six.binary_type):
         text = text.decode("utf-8")
 
+    if target == 'ar-EG':
+        target = 'ar'
+    elif target == 'nb-NO':
+        target = 'nb'
+
     # Text can also be a sequence of strings, in which case this method
     # will return a sequence of results for each text.
     result = translate_client.translate(text, target_language=target)
-    print("Google Translate: {} -> {}".format(result["input"], result["translatedText"]))
+    print("Google Translate: {} -> {}".format(result["input"], result["translatedText"].replace('&#39;', '\'')))
 
-    return result['translatedText']
+    return result['translatedText'].replace('&#39;', '\'')
 
 class AbpLanguageXML:
     def __init__(self, file_path):
