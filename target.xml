@@ -7,10 +7,5 @@
     <text name="Roles">角色</text>
     <text name="Users">用户</text>
     <text name="IAmNotInBase">I am not in base.</text>
-
-    <!-- === Begin: Auto generate by Abp Language XML Utilities At 2021-04-30 19:40:15.794672 === -->
-    <text name="IAmNotInTarget1">我不在目标1中。</text>
-    <text name="IAmNotInTarget2">我不在目标2中。</text>
-    <!-- === End: Auto generate by Abp Language XML Utilities At 2021-04-30 19:40:15.794672 === -->
     </texts>
 </localizationDictionary>
