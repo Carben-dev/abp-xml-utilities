@@ -23,7 +23,7 @@ usage: python3 main.py base target action
 ## Google API
 ### Install Google Python SDK
 ```
-pip install google-cloud-translate==2.0.1
+python3 -m pip install google-cloud-translate==2.0.1
 ```
 ### Get you own Google API Auth json file
 From: https://cloud.google.com/translate/docs/setup
